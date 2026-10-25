@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Node
+node_modules/
+frontend/dist/
+*.local
+
+# App data (never commit credentials or health data)
+.garmin_tokens/
+data/
+*.db
+*.db-wal
+*.db-shm
+.env
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

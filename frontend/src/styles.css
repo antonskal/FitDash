@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --carbon: #0b0c0e;
+  --panel: #181b1f;
+  --edge: #22252b;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-carbon text-ink antialiased;
+  font-feature-settings: 'tnum' 1, 'cv11' 1;
+}
+
+/* Tabular numerals everywhere numbers appear */
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* Grafana-like panel */
+.panel {
+  @apply bg-panel border border-edge rounded-sm shadow-panel;
+}
+.panel-title {
+  @apply text-[11px] font-semibold uppercase tracking-wider text-ink-dim;
+}
+
+/* scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2c3038 transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2c3038;
+  border-radius: 4px;
+}
+
+/* Buttons / inputs */
+.btn {
+  @apply inline-flex items-center gap-1.5 px-2.5 h-7 text-xs rounded-sm border border-edge-strong bg-panel text-ink
+    hover:bg-panel-hover hover:border-ink-faint transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+.btn-primary {
+  @apply bg-blue/20 border-blue/50 text-blue hover:bg-blue/30;
+}
+.btn-ghost {
+  @apply border-transparent bg-transparent hover:bg-panel-hover;
+}
+.pill {
+  @apply inline-flex items-center h-6 px-2 text-[11px] rounded-full border border-edge-strong text-ink-dim
+    hover:text-ink hover:border-ink-faint transition-colors cursor-pointer select-none;
+}
+.pill-active {
+  @apply bg-emerald/15 border-emerald/60 text-emerald;
+}
+.input {
+  @apply h-8 px-2.5 bg-carbon border border-edge-strong rounded-sm text-sm text-ink placeholder:text-ink-faint
+    focus:outline-none focus:border-blue/60;
+}
+.select {
+  @apply h-7 px-2 bg-carbon border border-edge-strong rounded-sm text-xs text-ink focus:outline-none focus:border-blue/60;
+}
+
+/* Table */
+.tbl {
+  @apply w-full text-xs;
+}
+.tbl th {
+  @apply text-left font-medium text-ink-faint uppercase tracking-wide text-[10px] py-1.5 px-2 border-b border-edge whitespace-nowrap;
+}
+.tbl td {
+  @apply py-1.5 px-2 border-b border-edge/60 whitespace-nowrap;
+}
+.tbl tbody tr:hover {
+  @apply bg-panel-hover;
+}
+
+/* Leaflet dark tweaks */
+.leaflet-container {
+  background: #0b0c0e;
+  font-family: inherit;
+}
+.map-tiles-dark {
+  filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.95) saturate(0.4);
+}
+.leaflet-control-attribution {
+  background: rgba(11, 12, 14, 0.7) !important;
+  color: #6e7378 !important;
+  font-size: 9px !important;
+}
+.leaflet-control-attribution a {
+  color: #9aa0a6 !important;
+}
+.leaflet-bar a {
+  background: #181b1f !important;
+  color: #d8d9da !important;
+  border-color: #22252b !important;
+}
+
+/* Grid cells */
+.cell {
+  @apply rounded-[2px] outline-none;
+}
+.cell:hover {
+  outline: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.pulse {
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
